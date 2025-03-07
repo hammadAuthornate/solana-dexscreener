@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useGetLatestTokenProfiles } from "../lib/dexscreener";
+import { useGetLatestTokenProfiles } from "../../lib/dexscreener";
 
 interface TokenLink {
   label?: string;

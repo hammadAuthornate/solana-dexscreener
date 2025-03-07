@@ -1,6 +1,6 @@
 "use client";
 import { use } from "react";
-import { useGetTransactionLogsForTokenAddress } from "../lib/dexscreener";
+import { useGetTransactionLogsForTokenAddress } from "../../lib/dexscreener";
 import { Loader2Icon } from "lucide-react";
 
 export default function TokenDetailsPage({
@@ -19,6 +19,10 @@ export default function TokenDetailsPage({
         list...
       </div>
     );
+  }
+
+  if (isError) {
+    return <div>Error: {error?.message?.toString()}</div>;
   }
 
   return (

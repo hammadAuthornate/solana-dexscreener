@@ -1,6 +1,6 @@
 "use client";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { monitorTokens } from "../lib/solana";
+import { monitorTokens } from "../../lib/solana";
 
 export default function WalletBalanceChecker() {
   const wallet = useWallet();

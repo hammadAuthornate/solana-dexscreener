@@ -49,6 +49,7 @@ export function useGetTransactionLogsForTokenAddress(address?: string) {
           const transaction = await solanaConnection.getTransaction(
             sig.signature
           );
+          console.log(transaction)
           return transaction;
         })
       );
