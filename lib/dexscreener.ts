@@ -1,7 +1,10 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { DexscreenerTokenProfile } from "../types/dexscreener";
+import {
+  DexscreenerPairDetailsResponse,
+  DexscreenerTokenProfile,
+} from "../types/dexscreener";
 import { PublicKey } from "@solana/web3.js";
 import { solanaConnection } from "./solana";
 
@@ -49,12 +52,24 @@ export function useGetTransactionLogsForTokenAddress(address?: string) {
           const transaction = await solanaConnection.getTransaction(
             sig.signature
           );
-          console.log(transaction)
+          console.log(transaction);
           return transaction;
         })
       );
 
       return result;
+    },
+  });
+}
+
+export function useGetPairDetails(address?: string) {
+  return useQuery({
+    queryKey: ["pair-details", address],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        "https://io.dexscreener.com/dex/pair-details/v3/solana/" + address
+      );
+      return data as DexscreenerPairDetailsResponse;
     },
   });
 }
